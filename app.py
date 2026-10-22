@@ -1,13 +1,23 @@
+
 from flask import Flask, render_template, request, redirect
 import sqlite3
+import os
 
 app = Flask(__name__)
 
-
 # ---------------- DATABASE ----------------
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATABASE = os.path.join(BASE_DIR, "students.db")
+
+
+def get_db_connection():
+    connection = sqlite3.connect(DATABASE, timeout=10)
+    return connection
+
+
 def create_database():
-    connection = sqlite3.connect("students.db")
+    connection = get_db_connection()
     cursor = connection.cursor()
 
     cursor.execute("""
@@ -23,6 +33,11 @@ def create_database():
 
     connection.commit()
     connection.close()
+
+
+# Create the table when the app starts
+create_database()
+
 
 
 # ---------------- LOGIN ----------------
@@ -64,7 +79,7 @@ def add_student():
         phone = request.form["phone"]
         email = request.form["email"]
 
-        connection = sqlite3.connect("students.db",timeout=10)
+        connection = get_db_connection()
         cursor = connection.cursor()
 
         cursor.execute("""
@@ -84,7 +99,7 @@ def add_student():
 @app.route("/students")
 def view_students():
 
-    connection = sqlite3.connect("students.db")
+    connection = get_db_connection()
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
@@ -105,7 +120,7 @@ def search_student():
 
         student_id = request.form["id"]
 
-        connection = sqlite3.connect("students.db")
+        connection = get_db_connection()
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
 
@@ -133,7 +148,7 @@ def update_student():
         phone = request.form["phone"]
         email = request.form["email"]
 
-        connection = sqlite3.connect("students.db")
+        connection = get_db_connection()
         cursor = connection.cursor()
 
         cursor.execute("""
@@ -157,7 +172,7 @@ def delete_student():
 
         student_id = request.form["id"]
 
-        connection = sqlite3.connect("students.db")
+        connection = get_db_connection()
         cursor = connection.cursor()
 
         cursor.execute(
@@ -174,7 +189,5 @@ def delete_student():
 
 
 # ---------------- RUN APPLICATION ----------------
-
 if __name__ == "__main__":
-    create_database()
     app.run(debug=True)
