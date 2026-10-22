@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System - Search Student</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="search-container">
+
+        <div class="search-card">
+
+            <h1>🎓 Student Management System</h1>
+
+            <h2>🔍 Search Student</h2>
+
+            <p class="search-subtitle">
+                Enter a Student ID to find the student record
+            </p>
+
+
+            <!-- Search Form -->
+
+            <form method="POST" id="searchForm">
+
+                <div class="search-form-group">
+
+                    <label for="student_id">
+                        Student ID
+                    </label>
+
+                    <input
+                        type="number"
+                        id="student_id"
+                        name="id"
+                        placeholder="Enter Student ID"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="search-btn">
+                    🔍 Search
+                </button>
+
+            </form>
+
+
+            <!-- Student Result -->
+
+            {% if student %}
+
+            <div class="student-result">
+
+                <h3>✅ Student Found</h3>
+
+                <p><strong>Student ID:</strong> {{ student["id"] }}</p>
+
+                <p><strong>Name:</strong> {{ student["name"] }}</p>
+
+                <p><strong>Age:</strong> {{ student["age"] }}</p>
+
+                <p><strong>Course:</strong> {{ student["course"] }}</p>
+
+                <p><strong>Phone:</strong> {{ student["phone"] }}</p>
+
+                <p><strong>Email:</strong> {{ student["email"] }}</p>
+
+            </div>
+
+
+            {% elif request.method == "POST" %}
+
+            <div class="not-found">
+
+                <p>❌ Student not found.</p>
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- Buttons -->
+
+            <div class="search-buttons">
+
+                <a href="/students" class="view-btn">
+                    👥 View All Students
+                </a>
+
+                <a href="/dashboard" class="dashboard-btn">
+                    ← Back to Dashboard
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        const searchForm = document.getElementById("searchForm");
+
+        searchForm.addEventListener("submit", function(event) {
+
+            const studentId =
+                document.getElementById("student_id").value;
+
+            if (studentId <= 0) {
+
+                alert("Please enter a valid Student ID.");
+
+                event.preventDefault();
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

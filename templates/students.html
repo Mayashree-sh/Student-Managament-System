@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System - All Students</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Main Container -->
+
+    <div class="students-container">
+
+        <div class="students-card">
+
+            <h1>🎓 Student Management System</h1>
+
+            <h2>All Students</h2>
+
+            <p class="students-subtitle">
+                View all student records
+            </p>
+
+
+            <!-- Student Table -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Course</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for student in students %}
+
+                        <tr>
+
+                            <td>{{ student["id"] }}</td>
+                            <td>{{ student["name"] }}</td>
+                            <td>{{ student["age"] }}</td>
+                            <td>{{ student["course"] }}</td>
+                            <td>{{ student["phone"] }}</td>
+                            <td>{{ student["email"] }}</td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="student-buttons">
+
+                <a href="/add" class="add-student-btn">
+                    ➕ Add Another Student
+                </a>
+
+                <a href="/dashboard" class="dashboard-btn">
+                    ← Back to Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        window.addEventListener("load", function() {
+
+            console.log("All Students page loaded successfully.");
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+css
+/* Delete Student Page */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Main Container */
+
+.delete-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Delete Card */
+
+.delete-card {
+    width: 430px;
+    padding: 40px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+
+    text-align: center;
+
+    animation: slideUp 0.6s ease;
+}
+
+
+/* Heading */
+
+.delete-card h1 {
+    font-size: 27px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.delete-card h2 {
+    font-size: 24px;
+    color: #e53935;
+    margin-bottom: 15px;
+}
+
+
+/* Warning */
+
+.warning-text {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+
+/* Label */
+
+.delete-card label {
+    display: block;
+    text-align: left;
+
+    font-weight: bold;
+    color: #333;
+
+    margin-bottom: 8px;
+}
+
+
+/* Input */
+
+.delete-card input {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 2px solid #ddd;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+
+/* Input Focus */
+
+.delete-card input:focus {
+    border-color: #e53935;
+
+    box-shadow: 0 0 8px rgba(229, 57, 53, 0.2);
+}
+
+
+/* Delete Button */
+
+.delete-btn {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #e53935;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+/* Button Hover */
+
+.delete-btn:hover {
+    background: #c62828;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 15px rgba(229, 57, 53, 0.3);
+}
+
+
+/* Links */
+
+.links {
+    margin-top: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.links a {
+    text-decoration: none;
+
+    padding: 11px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+/* View Students */
+
+.view-link {
+    background: #667eea;
+
+    color: white;
+}
+
+.view-link:hover {
+    background: #5568d8;
+}
+
+
+/* Dashboard */
+
+.dashboard-link {
+    background: #f1f1f1;
+
+    color: #333;
+}
+
+.dashboard-link:hover {
+    background: #ddd;
+}
+
+
+/* Animation */
+
+@keyframes slideUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .delete-card {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .delete-card h1 {
+        font-size: 23px;
+    }
+
+}

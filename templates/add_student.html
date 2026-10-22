@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Student</title>
+
+    <!-- CSS -->
+     
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="add-container">
+
+        <div class="add-card">
+
+            <h1>🎓 Student Management System</h1>
+            <h2>Add Student</h2>
+
+            <p class="subtitle">Enter the student's information below</p>
+
+            <form method="POST" id="studentForm">
+
+                <div class="form-group">
+                    <label for="id">Student ID</label>
+                    <input type="number" id="id" name="id"
+                           placeholder="Enter Student ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Student Name</label>
+                    <input type="text" id="name" name="name"
+                           placeholder="Enter Student Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age"
+                           placeholder="Enter Age" min="1" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <input type="text" id="course" name="course"
+                           placeholder="Enter Course" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone"
+                           placeholder="Enter Phone Number"
+                           maxlength="10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="Enter Email Address" required>
+                </div>
+
+                <button type="submit" class="add-btn">
+                    Add Student
+                </button>
+
+            </form>
+
+            <a href="{{ url_for('dashboard') }}" class="back-btn">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const form = document.getElementById("studentForm");
+
+        form.addEventListener("submit", function(event) {
+
+            const phone = document.getElementById("phone").value;
+            const age = document.getElementById("age").value;
+
+            // Check phone number
+            if (!/^[0-9]{10}$/.test(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                event.preventDefault();
+                return;
+            }
+
+            // Check age
+            if (age < 1 || age > 100) {
+                alert("Please enter a valid age.");
+                event.preventDefault();
+                return;
+            }
+
+            alert("Student information is being submitted!");
+        });
+    </script>
+
+</body>
+</html>
+```

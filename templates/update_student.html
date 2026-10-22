@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Update Student</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='update_student.css') }}">
+</head>
+
+<body>
+
+    <div class="update-container">
+
+        <div class="update-card">
+
+            <h1>Student Management System</h1>
+
+            <h2>Update Student</h2>
+
+            <p class="info-text">
+                Enter the Student ID and update the student information.
+            </p>
+
+            <form method="POST" onsubmit="return confirmUpdate()">
+
+                <label for="student_id">Student ID:</label>
+                <input
+                    type="number"
+                    id="student_id"
+                    name="id"
+                    placeholder="Enter Student ID"
+                    required
+                >
+
+                <label for="name">Name:</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter Student Name"
+                    required
+                >
+
+                <label for="age">Age:</label>
+                <input
+                    type="number"
+                    id="age"
+                    name="age"
+                    placeholder="Enter Age"
+                    required
+                >
+
+                <label for="course">Course:</label>
+                <input
+                    type="text"
+                    id="course"
+                    name="course"
+                    placeholder="Enter Course"
+                    required
+                >
+
+                <label for="phone">Phone Number:</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Enter Phone Number"
+                    required
+                >
+
+                <label for="email">Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter Email"
+                    required
+                >
+
+                <button type="submit" class="update-btn">
+                    Update Student
+                </button>
+
+            </form>
+
+            <div class="links">
+
+                <a href="/students" class="view-link">
+                    View All Students
+                </a>
+
+                <a href="/dashboard" class="dashboard-link">
+                    Back to Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function confirmUpdate() {
+
+            const studentId =
+                document.getElementById("student_id").value;
+
+            if (studentId === "") {
+                alert("Please enter Student ID.");
+                return false;
+            }
+
+            const result = confirm(
+                "Are you sure you want to update Student ID "
+                + studentId + "?"
+            );
+
+            return result;
+        }
+
+    </script>
+
+</body>
+
+</html>
